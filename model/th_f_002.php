@@ -23,6 +23,14 @@
           var id = document.getElementById("formato_id_030").value;
           window.location = './sgi_f_030/index.php?id_formato='+id;
       });
+      $('#formato_id_037').change(function(){
+          var id = document.getElementById("formato_id_037").value;
+          window.location = './sgi_f_037/index.php?id_formato='+id;
+      });
+      $('#formato_id_065').change(function(){
+          var id = document.getElementById("formato_id_065").value;
+          window.location = './sgi_f_065/index.php?id_formato='+id;
+      });
 
     });
 
