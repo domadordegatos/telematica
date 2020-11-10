@@ -20,8 +20,9 @@
             $a14=$_POST['form14']; $a30=$_POST['form30']; $a46=$_POST['form46']; $a62=$_POST['form62'];                        $a94=$_POST['form94'];
             $a15=$_POST['form15']; $a31=$_POST['form31']; $a47=$_POST['form47']; $a63=$_POST['form63']; $a79=$_POST['form79']; $a95=$_POST['form95'];
             $a16=$_POST['form16']; $a32=$_POST['form32']; $a48=$_POST['form48']; $a64=$_POST['form64']; $a80=$_POST['form80']; $a96=$_POST['form96'];
+            $a97=$_POST['form97'];
 
-            $sql="INSERT INTO sgi_f_037 VALUES ('','$a1','$a2','$a3','$a4')";
+            $sql="INSERT INTO sgi_f_037 VALUES ('','$a1','$a2','$a3','$a4','0','$a97')";
             $ejecutar=mysqli_query($conexion, $sql);
             if($ejecutar){
                     $id= "SELECT id_037_principal FROM sgi_f_037 ORDER BY id_037_principal DESC LIMIT 0,1";

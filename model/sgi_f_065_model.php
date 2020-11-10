@@ -8,12 +8,12 @@
             $a2=$_POST['form2'];   $a66=$_POST['form66']; $a82=$_POST['form82'];
             $a3=$_POST['form3'];   $a67=$_POST['form67']; $a83=$_POST['form83'];
             $a4=$_POST['form4'];   $a68=$_POST['form68']; $a84=$_POST['form84'];
-            $a5=$_POST['form5'];   $a69=$_POST['form69']; $a85=$_POST['form85'];
-            $a6=$_POST['form6'];   $a70=$_POST['form70']; $a86=$_POST['form86'];
-            $a7=$_POST['form7'];   $a71=$_POST['form71']; $a87=$_POST['form87'];
-            $a8=$_POST['form8'];   $a72=$_POST['form72']; $a88=$_POST['form88'];
-            $a9=$_POST['form9'];   $a73=$_POST['form73']; $a89=$_POST['form89'];
-            $a10=$_POST['form10']; $a74=$_POST['form74']; $a90=$_POST['form90'];
+            $a5=$_POST['form5'];   $a69=$_POST['form69']; 
+            $a6=$_POST['form6'];   $a70=$_POST['form70']; 
+               $a71=$_POST['form71']; 
+               $a72=$_POST['form72']; 
+               $a73=$_POST['form73']; $a89=$_POST['form89'];
+               $a74=$_POST['form74']; $a90=$_POST['form90'];
             $a11=$_POST['form11']; $a75=$_POST['form75']; $a91=$_POST['form91'];
             $a12=$_POST['form12']; $a76=$_POST['form76']; $a92=$_POST['form92'];
                                    $a77=$_POST['form77'];
@@ -21,7 +21,7 @@
                                    $a79=$_POST['form79'];
                                    $a80=$_POST['form80'];
 
-            $sql="INSERT INTO sgi_f_065 VALUES ('','$a1','$a2','$a3','$a4','$a5','$a6','$a7','$a8','$a9','$a10','$a11','$a12','$a84','$a85','$a86','$a87','$a88')";
+            $sql="INSERT INTO sgi_f_065 (id_065_principal,lugar,lider_1,acudiente,telefono,descripcion,integrante1,observaciones,lider_2,epp1,estado) VALUES ('','$a1','$a2','$a3','$a4','$a5','$a6','$a11','$a12','$a84','1')";
             $ejecutar=mysqli_query($conexion, $sql);
             if($ejecutar){
                     $id= "SELECT id_065_principal FROM sgi_f_065 ORDER BY id_065_principal DESC LIMIT 0,1";

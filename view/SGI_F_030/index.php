@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <?php require_once "../menus/index.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGI_F_030</title>
     <?php require_once "../libraries/lib.php";
@@ -9,6 +10,17 @@
           require_once "../../model/sgi_f_030.php";
 
           $conexion=conexion();
+          $user = $_SESSION['user'];
+
+          $sql="SELECT login_users.id_user FROM login_users WHERE login_users.usuario = '$user'";
+          $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
+          $sql1="SELECT usuarios.id_user FROM login_users JOIN usuarios ON usuarios.credenciales = login_users.id_user WHERE login_users.id_user = '$ver[0]'";
+          $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
+
+          date_default_timezone_set('America/Bogota');
+            $fecha= date('Y-m-d'); 
+            $time = time(); 
+            $hora = date("H:i:s",$time);
           ?>
 </head>
 <body>
@@ -23,7 +35,7 @@
                 </div>
                 <div class="col-4 border d-flex flex-column" style="padding: 0%;">
                   <row class="border">Código: SGI F 030</row>
-                  <row class="border">Revisado: Mayo 2019</row>
+                  <row class="border">Revisado: Mayo 2020</row>
                   <row class="border">Versión: 02</row>
                 </div>
               </div>
@@ -43,30 +55,30 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-3 border border-secondary">
+              <div class="col-sm-6 border border-secondary">
                 <div class="form-group row m-0">
                   <label for="example-date-input" class="py-0 col-3 col-form-label">FECHA</label>
                   <div class="col-9">
-                    <input class="form-control form-control-sm" type="date" value="" id="fecha" min=""> 
+                    <input class="form-control form-control-sm" type="date" id="fecha" min="<?php echo $fecha; ?>" value="<?php echo $fecha; ?>"> 
                   </div>
                 </div>
               </div>
-              <div class="col-sm-5 border border-secondary">
+              <div class="col-sm-6 border border-secondary">
                 <div class="form-group row m-0">
                   <label for="example-date-input" class="py-0 col- col-form-label">INSPECCIONADO POR:</label>
                   <div class="col-6">
                     <select class="form-control form-control-sm" id="inspector" name="inspector">
                       <option value="A">Lider...</option>
-                      <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                      $result=mysqli_query($conexion,$sql);
-                      while ($ver=mysqli_fetch_row($result)):?>
-                      <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                      <?php endwhile; ?>
+                      <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
+                                      $result=mysqli_query($conexion,$sql);
+                                      while ($ver=mysqli_fetch_row($result)):?>
+                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
+                          <?php endwhile; ?>
                     </select>
                   </div>
                 </div>
               </div>
-              <div class="col-sm-4 border border-secondary">FIRMA:</div>
+              <!-- <div class="col-sm-4 border border-secondary">FIRMA:</div> -->
             </div>
 
         <!-- <div class="row">
@@ -566,32 +578,7 @@
         <div class="segment3 my-3">
 
           <div class="row">
-            <div class="col-sm-2 border border-secondary d-flex justify-content-center align-items-center" style="background:rgb(189, 187, 187);">
-              RESCATISTA
-            </div>
-            <div class="col-sm-6 border border-secondary">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group my-auto">
-                    <div class="col-sm-12">
-                      <select class="form-control form-control-sm" id="rescatista" name="rescatista">
-                        <option value="A">Lider...</option>
-                        <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                        $result=mysqli_query($conexion,$sql);
-                        while ($ver=mysqli_fetch_row($result)):?>
-                        <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                        <?php endwhile; ?>
-                      </select>
-                      <label for="3" class="col-sm-12 col-form-label">NOMBRE</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  FIRMA
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 border border-secondary">
+            <div class="col-sm-12 border border-secondary">
               <div class="row">
                 <div class="col-sm-12">
                   CIERRE DE LOS HALLAZGOS ENCONTRADOS
@@ -616,38 +603,11 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-2 border border-secondary  d-flex justify-content-center align-items-center"  style="background:rgb(189, 187, 187);">
-              APOYO EN PISO
-            </div>
-            <div class="col-sm-6 border border-secondary">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group m-0">
-                    <div class="form-group my-auto">
-                      <div class="col-sm-12">
-                        <select class="form-control form-control-sm" id="apoyo_piso" name="apoyo_piso">
-                          <option value="A">Lider...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                          $result=mysqli_query($conexion,$sql);
-                          while ($ver=mysqli_fetch_row($result)):?>
-                          <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                          <?php endwhile; ?>
-                        </select>
-                        <label for="3" class="col-sm-12 col-form-label">NOMBRE</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  FIRMA
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 border border-secondary">
+            <div class="col-sm-12 border border-secondary">
               <div class="form-group row m-0">
                 <label for="example-date-input" class="py-0 col-4 col-form-label">FECHA DE CIERRE</label>
                 <div class="col-8">
-                  <input class="form-control form-control-sm" type="date" value="" id="fecha_cierre">
+                  <input class="form-control form-control-sm" type="date" min="<?php echo $fecha; ?>" value="<?php echo $fecha; ?>" id="fecha_cierre">
                 </div>
               </div>
             </div>

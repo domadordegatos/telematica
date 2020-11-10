@@ -12,7 +12,6 @@ session_start();
          <th><?php echo $dat[2] ?></th>
          <th><?php echo $dat[4] ?></th>
          <th><?php echo $dat[5] ?></th>
-         <th></th>
        </tr>
 
 <?php } ?>

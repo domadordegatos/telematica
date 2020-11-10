@@ -2,12 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <?php require_once "../menus/index.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php require_once "../libraries/lib.php";
           require_once "../../model/conexion.php";
           require_once "../../model/sgi_f_065.php"; 
           $conexion=conexion();
+
+          $user = $_SESSION['user'];
+
+            $sql="SELECT login_users.id_user FROM login_users WHERE login_users.usuario = '$user'";
+            $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
+            $sql1="SELECT usuarios.id_user FROM login_users JOIN usuarios ON usuarios.credenciales = login_users.id_user WHERE login_users.id_user = '$ver[0]'";
+            $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
     ?>
 </head>
 <body>
@@ -19,7 +27,7 @@
                   <img src="../media/photos/t_white.PNG" alt="png_telematica" width="200px">
                 </div>
                 <div class="col-4 border border-secondary d-flex text-center align-items-center">
-                  <p>LISTA DE CHEQUEO PARA TRABAJOS</p>
+                  <p class="text-center">LISTA DE CHEQUEO PARA TRABAJOS</p>
                 </div>
                 <div class="col-4 border border-secondary d-flex flex-column" style="padding: 0%;">
                   <row class="border border-secondary">Código: SGI F 065</row>
@@ -54,7 +62,7 @@
                 <div class="col-sm-8 border-secondary border">
                     <select class="form-control form-control-sm" id="lider_1">
                         <option value="A">Lider....</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
+                        <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
                                       $result=mysqli_query($conexion,$sql);
                                       while ($ver=mysqli_fetch_row($result)):?>
                             <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
@@ -285,7 +293,7 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-sm-6 border border-secondary d-flex justify-content-around align-items-center">
+                <div class="col-sm-9 border border-secondary d-flex justify-content-around align-items-center">
                     NOMBRES  PERSONAL EJECUTANTE				
                 </div>
                 <div class="col-sm-3 border border-secondary">
@@ -303,16 +311,16 @@
                         </div>
                     </div>
                 </div>
-                    <div class="col-sm-3 border border-secondary d-flex justify-content-around align-items-center">
+                    <!-- <div class="col-sm-3 border border-secondary d-flex justify-content-around align-items-center">
                         FIRMA
-                    </div>
+                    </div> -->
             </div>
 
             <div class="row">
-                <div class="col-sm-6 border border-secondary">
+                <div class="col-sm-9 border border-secondary">
                     <select class="form-control form-control-sm" id="per_01">
                         <option value="A">Integrante...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
+                        <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
                                       $result=mysqli_query($conexion,$sql);
                                       while ($ver=mysqli_fetch_row($result)):?>
                             <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
@@ -323,89 +331,9 @@
                     <input type="radio" name="per_01" value="SI" checked>
                     <input type="radio" name="per_01" value="NO" >
                 </div>
-                <div class="col-sm-3 border border-secondary">
+                <!-- <div class="col-sm-3 border border-secondary">
 
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6 border border-secondary">
-                    <select class="form-control form-control-sm" id="per_02">
-                        <option value="A">Integrante...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                                      $result=mysqli_query($conexion,$sql);
-                                      while ($ver=mysqli_fetch_row($result)):?>
-                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                          <?php endwhile; ?>
-                      </select>
-                </div>
-                <div class="col-sm-3 border border-secondary d-flex justify-content-around align-items-center">
-                    <input type="radio" name="per_02" value="SI" checked>
-                    <input type="radio" name="per_02" value="NO" >
-                </div>
-                <div class="col-sm-3 border border-secondary">
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6 border border-secondary">
-                    <select class="form-control form-control-sm" id="per_03">
-                        <option value="A">Integrante...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                                      $result=mysqli_query($conexion,$sql);
-                                      while ($ver=mysqli_fetch_row($result)):?>
-                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                          <?php endwhile; ?>
-                      </select>
-                </div>
-                <div class="col-sm-3 border border-secondary d-flex justify-content-around align-items-center">
-                    <input type="radio" name="per_03" value="SI" checked>
-                    <input type="radio" name="per_03" value="NO" >
-                </div>
-                <div class="col-sm-3 border border-secondary">
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6 border border-secondary">
-                    <select class="form-control form-control-sm" id="per_04">
-                        <option value="A">Integrante...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                                      $result=mysqli_query($conexion,$sql);
-                                      while ($ver=mysqli_fetch_row($result)):?>
-                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                          <?php endwhile; ?>
-                      </select>
-                </div>
-                <div class="col-sm-3 border border-secondary d-flex justify-content-around align-items-center">
-                    <input type="radio" name="per_04" value="SI" checked>
-                    <input type="radio" name="per_04" value="NO" >
-                </div>
-                <div class="col-sm-3 border border-secondary">
-
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6 border border-secondary">
-                    <select class="form-control form-control-sm" id="per_05">
-                        <option value="A">Integrante...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                                      $result=mysqli_query($conexion,$sql);
-                                      while ($ver=mysqli_fetch_row($result)):?>
-                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                          <?php endwhile; ?>
-                      </select>
-                </div>
-                <div class="col-sm-3 border border-secondary d-flex justify-content-around align-items-center">
-                    <input type="radio" name="per_05" value="SI" checked>
-                    <input type="radio" name="per_05" value="NO" >
-                </div>
-                <div class="col-sm-3 border border-secondary">
-
-                </div>
+                </div> -->
             </div>
 
             <div class="row text-center bg-info text-white">
@@ -466,34 +394,36 @@
             </div>
 
             <div class="row border-secondary border">
-                <label for="">OBSERVACIONES</label>
-                <textarea class="form-control" id="observaciones" rows="1" placeholder="alguna observacion?..."></textarea>
+                <div class="col-sm-12">
+                    <label for="">OBSERVACIONES</label>
+                    <textarea class="form-control" id="observaciones" rows="1" placeholder="alguna observacion?..."></textarea>
+                </div>
             </div>
 
             <div class="row">
-                <div class="col-sm-6 border-secondary border">
+                <div class="col-sm-12 border-secondary border">
                     <div class="row">
                         <div class="col-sm-4">LIDER DE TRABAJO:</div>
                         <div class="col-sm-8">
                             <select class="form-control form-control-sm" id="lider_2">
                                 <option value="A">Lider...</option>
-                                  <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                                              $result=mysqli_query($conexion,$sql);
-                                              while ($ver=mysqli_fetch_row($result)):?>
+                                <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
+                                      $result=mysqli_query($conexion,$sql);
+                                      while ($ver=mysqli_fetch_row($result)):?>
                                     <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                                  <?php endwhile; ?>
+                                <?php endwhile; ?>
                               </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 border-secondary border">
+                <!-- <div class="col-sm-6 border-secondary border">
                     <div class="row">
                         <div class="col-sm-6">FIRMA:</div>
                         <div class="col-sm-6">
 
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="row mt-2">

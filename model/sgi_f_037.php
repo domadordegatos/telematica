@@ -2,7 +2,7 @@
     function agregar_informe(){
         if($('#lugar').val()=="" || $('#fecha').val()=="" || 
            $('#observaciones').val()=="" || $('#revisado').val()=="" ||
-           $('#it-01').val()=="" || $('#ic-01').val()==""){
+           $('#it-01').val()=="" || $('#ic-01').val()=="" || $('#numero').val()==""){
           message_campos();
           }else{
           cadena="form1=" + $('#fecha').val() +
@@ -98,7 +98,8 @@
                 "&form93="  + $('input[name="ie-27"]:checked').val()+
                 "&form94="  + $('input[name="ie-28"]:checked').val()+
                 "&form95="  + $('input[name="ie-29"]:checked').val()+
-                "&form96="  + $('input[name="ie-30"]:checked').val();
+                "&form96="  + $('input[name="ie-30"]:checked').val()+
+                "&form97=" + $('#numero').val();
                 $.ajax({
                   type:"POST",
                   url:"../../controller/sgi_f_037/agregar_formato_037.php", //validacion de datos de registro
@@ -110,6 +111,7 @@
                       document.getElementById("lugar").value = "";
                       document.getElementById("revisado").value = "";
                       document.getElementById("observaciones").value = "";
+                      document.getElementById("numero").value = "";
                       document.getElementById("it-01").value = "";
                       document.getElementById("it-02").value = "";
                       document.getElementById("it-03").value = "";

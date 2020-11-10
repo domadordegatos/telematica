@@ -11,10 +11,10 @@
                  "&form4=" + $('#telefono').val() +
                  "&form5=" + $('#descripcion').val() +
                  "&form6=" + $('#per_01').val() +
-                 "&form7=" + $('#per_02').val() +
+                 /* "&form7=" + $('#per_02').val() +
                  "&form8=" + $('#per_03').val() +
                  "&form9=" + $('#per_04').val() +
-                "&form10=" + $('#per_05').val() +
+                "&form10=" + $('#per_05').val() + */
                 "&form11=" + $('#observaciones').val() +
                 "&form12=" + $('#lider_2').val() +
                 "&form66="  + $('input[name="ch_01"]:checked').val()+
@@ -35,10 +35,10 @@
                 "&form82="  + $('input[name="ch_16"]:checked').val()+
                 "&form83="  + $('input[name="ch_17"]:checked').val()+
                 "&form84="  + $('input[name="per_01"]:checked').val()+
-                "&form85="  + $('input[name="per_02"]:checked').val()+
+                /* "&form85="  + $('input[name="per_02"]:checked').val()+
                 "&form86="  + $('input[name="per_03"]:checked').val()+
                 "&form87="  + $('input[name="per_04"]:checked').val()+
-                "&form88="  + $('input[name="per_05"]:checked').val()+
+                "&form88="  + $('input[name="per_05"]:checked').val()+ */
                 "&form89="  + $('input[name="cr_01"]:checked').val()+
                 "&form90="  + $('input[name="cr_02"]:checked').val()+
                 "&form91="  + $('input[name="cr_03"]:checked').val()+

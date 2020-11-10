@@ -20,8 +20,8 @@
           cadena="form1=" + $('#actividad').val() +
                 "&form2=" + $('#fecha').val() +
                 "&form3=" + $('#inspector').val() +
-                "&form4=" + $('#rescatista').val() +
-                "&form5=" + $('#apoyo_piso').val() +
+                /* "&form4=" + $('#rescatista').val() +
+                "&form5=" + $('#apoyo_piso').val() + */
                 "&form6="  + $('input[name="tie1"]:checked').val() +
                 "&form7="  + $('input[name="tie2"]:checked').val() +
                 "&form8="  + $('input[name="tie3"]:checked').val() +
@@ -75,7 +75,7 @@
                   data:cadena,
                   success:function(r){
                     if(r==1){
-                      message_exito();
+                      alertify.success("Formato creado con exito, falta coordinador y apoyo en piso");
                       document.getElementById("actividad").value = "";
                       document.getElementById("fecha").value = "";
                       document.getElementById("inspector").value = "";

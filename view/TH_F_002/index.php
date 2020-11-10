@@ -1,5 +1,6 @@
 <html lang="es">
 <head>
+<?php require_once "../menus/index.php"; ?>
     <?php require_once "../libraries/lib.php";
           require_once "../../model/conexion.php"; 
           require_once "../../model/th_f_002.php"; 
@@ -7,40 +8,33 @@
           $conexion=conexion();
           $id_del_formato_recuperado=$_REQUEST['id_formato'];  
           $value = $id_del_formato_recuperado;
-      if($id_del_formato_recuperado != 'A'){
-        $consulta="SELECT th_f_002.id_th_f_002,
-                          th_f_002.asunto,
-                          th_f_002.lugar,
-                          th_f_002.permiso,
-                          th_f_002.contenido,
-                          th_f_002.fecha,
-                          th_f_002.hora_i,
-                          th_f_002.hora_f,
-                          usuarios.`names`,
-                          usuarios.lastnames
-                          FROM th_f_002
-                          JOIN usuarios ON usuarios.id_user = th_f_002.instructor
-                          WHERE th_f_002.id_th_f_002 = '$id_del_formato_recuperado '";
-        $result=mysqli_query($conexion,$consulta);
-        $datos_th_f_002=mysqli_fetch_assoc($result);
-      }else{
-        $consulta="SELECT th_f_002.id_th_f_002,
-                          th_f_002.asunto,
-                          th_f_002.lugar,
-                          th_f_002.permiso,
-                          th_f_002.contenido,
-                          th_f_002.fecha,
-                          th_f_002.hora_i,
-                          th_f_002.hora_f,
-                          usuarios.`names`,
-                          usuarios.lastnames
-                          FROM th_f_002
-                          JOIN usuarios ON usuarios.id_user = th_f_002.instructor
-                          WHERE th_f_002.id_th_f_002 = '0'";
-        $result=mysqli_query($conexion,$consulta);
-        $datos_th_f_002=mysqli_fetch_assoc($result);
-      }
 
+          $consulta="SELECT th_f_002.id_th_f_002,
+                            th_f_002.asunto,
+                            th_f_002.lugar,
+                            th_f_002.permiso,
+                            th_f_002.contenido,
+                            th_f_002.fecha,
+                            th_f_002.hora_i,
+                            th_f_002.hora_f,
+                            usuarios.`names`,
+                            usuarios.lastnames
+                            FROM th_f_002
+                            JOIN usuarios ON usuarios.id_user = th_f_002.instructor
+                            WHERE th_f_002.id_th_f_002 = '$id_del_formato_recuperado '";
+          $result=mysqli_query($conexion,$consulta);
+          $datos_th_f_002=mysqli_fetch_assoc($result);
+          $user = $_SESSION['user'];
+
+            $sql="SELECT login_users.id_user FROM login_users WHERE login_users.usuario = '$user'";
+            $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
+            $sql1="SELECT usuarios.id_user FROM login_users JOIN usuarios ON usuarios.credenciales = login_users.id_user WHERE login_users.id_user = '$ver[0]'";
+            $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
+
+            date_default_timezone_set('America/Bogota');
+            $fecha= date('Y-m-d'); 
+            $time = time(); 
+            $hora = date("H:i:s",$time);
     ?>
 
     <meta charset="UTF-8">
@@ -59,7 +53,7 @@
             </div>
             <div class="col-4 border border-secondary d-flex flex-column" style="padding: 0%;">
               <row class="border border-secondary">Código: TH F 002</row>
-              <row class="border border-secondary">Revisado: Septiembre 2018</row>
+              <row class="border border-secondary">Revisado: Septiembre 2020</row>
               <row class="border border-secondary">Versión: 02</row>
             </div>
           </div>
@@ -112,7 +106,7 @@
               <div class="form-group row my-auto">
                 <label for="3" class="col-4 col-form-label">FECHA</label>
                 <div class="col-sm-8">
-                  <input <?php if($value != 'A'){ echo 'disabled'; } ?> class="form-control form-control-sm" type="date" value="<?php echo $datos_th_f_002['fecha']  ?>" id="fecha_form">
+            <input <?php if($value != 'A'){ echo 'disabled'; ?> value="<?php echo $datos_th_f_002['fecha']; ?>" <?php }else{?> min="<?php echo $fecha; ?>" value="<?php echo $fecha; ?>" <?php }?>  class="form-control form-control-sm" type="date"  id="fecha_form">
                 </div>
               </div>
             </div>
@@ -132,7 +126,7 @@
               <div class="form-group row my-auto">
                 <label for="3" class="col-6 col-form-label">HORA INICIO</label>
                 <div class="col-sm-6">
-                  <input <?php if($value != 'A'){ echo 'disabled'; } ?> class="form-control form-control-sm" type="time" value="<?php echo $datos_th_f_002['hora_i']  ?>" class="form-control form-control-sm" id="hora_inicio_form">
+                <input <?php if($value != 'A'){ echo 'disabled'; ?> value="<?php echo $datos_th_f_002['hora_i']; ?>" <?php }else{?> value="<?php echo $hora; ?>" <?php } ?>  class="form-control form-control-sm" type="time"  class="form-control form-control-sm" id="hora_inicio_form">
                 </div>
               </div>
             </div>
@@ -141,7 +135,7 @@
               <div class="form-group row my-auto">
                 <label for="3" class="col-6 col-form-label">HORA FINAL</label>
                 <div class="col-sm-6">
-                  <input <?php if($value != 'A'){ echo 'disabled'; } ?> class="form-control form-control-sm" type="time" value="<?php echo $datos_th_f_002['hora_f']  ?>" id="hora_fin_form">
+                  <input <?php if($value != 'A'){ echo 'disabled'; ?> value="<?php echo $datos_th_f_002['hora_f']; ?>" <?php }else{?> value="<?php echo $hora; ?>" <?php } ?> class="form-control form-control-sm" type="time" id="hora_fin_form">
                 </div>
               </div>
             </div>
@@ -162,11 +156,11 @@
                 <div class="col-sm-10">
                   <select <?php if($value != 'A'){ echo 'disabled'; } ?> class="form-control form-control-sm" id="instructor" name="instructor">
                     <option value="A"><?php if($value == '1'){ echo $datos_th_f_002['names']." ".$datos_th_f_002['lastnames']; }else{ ?>Instructores...<?php } ?></option>
-                      <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
-                                  $result=mysqli_query($conexion,$sql);
-                                  while ($ver=mysqli_fetch_row($result)):?>
-                        <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
-                      <?php endwhile; ?>
+                    <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
+                                      $result=mysqli_query($conexion,$sql);
+                                      while ($ver=mysqli_fetch_row($result)):?>
+                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
+                          <?php endwhile; ?>
                   </select>
                 </div>
               </div>
@@ -215,7 +209,6 @@
                     <td>Cedula</td>
                     <td>Compañia</td>
                     <td>Area/Proceso</td>
-                    <td>Firma</td>
                 </tr>
                 <tbody id="tabla_002">
 
@@ -231,7 +224,6 @@
                     <td><input class="form-control form-control-sm" type="number" id="cedula_empleado" name=""></td>
                     <td><input class="form-control form-control-sm" type="text" id="company_empleado" name=""></td>
                     <td><input class="form-control form-control-sm" type="text" id="area_empleado" name=""></td>
-                    <td></td>
                 </tr>
                 <tr>
                   <td colspan="6">
@@ -240,10 +232,10 @@
                       <div class="col-sm-4">
                         <select class="form-control form-control-sm" id="empleado_id" name="empleado_id">
                           <option value="A">Trabajadores...</option>
-                          <?php $sql="SELECT id_user, NAMES, lastnames, cedula FROM usuarios";
-                          $result=mysqli_query($conexion,$sql);
-                          while ($ver=mysqli_fetch_row($result)):?>
-                          <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
+                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
+                                      $result=mysqli_query($conexion,$sql);
+                                      while ($ver=mysqli_fetch_row($result)):?>
+                            <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
                           <?php endwhile; ?>
                         </select>                      
                       </div>

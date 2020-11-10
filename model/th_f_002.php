@@ -17,19 +17,27 @@
 
       $('#formato_id').change(function(){
           var id = document.getElementById("formato_id").value;
-          window.location = './th_f_002/index.php?id_formato='+id;
+          window.location = '../th_f_002/index.php?id_formato='+id;
       });
       $('#formato_id_030').change(function(){
           var id = document.getElementById("formato_id_030").value;
-          window.location = './sgi_f_030/index.php?id_formato='+id;
+          window.location = '../agregarme/030.php?id_formato='+id;
       });
-      $('#formato_id_037').change(function(){
-          var id = document.getElementById("formato_id_037").value;
-          window.location = './sgi_f_037/index.php?id_formato='+id;
+      $('#formato_id_058').change(function(){
+          var id = document.getElementById("formato_id_058").value;
+          window.location = '../agregarme/058.php?id_formato='+id;
       });
       $('#formato_id_065').change(function(){
           var id = document.getElementById("formato_id_065").value;
-          window.location = './sgi_f_065/index.php?id_formato='+id;
+          window.location = '../agregarme/065.php?id_formato='+id;
+      });
+      $('#formato_id_059').change(function(){
+          var id = document.getElementById("formato_id_059").value;
+          window.location = '../agregarme/059.php?id_formato='+id;
+      });
+      $('#formato_id_029').change(function(){
+          var id = document.getElementById("formato_id_029").value;
+          window.location = '../agregarme/029.php?id_formato='+id;
       });
 
     });
@@ -75,6 +83,22 @@
                   }
                 });
       }
+      function cargar_tabla_temporall(){
+        ocultar_segmento_3();//llamo al proceso de ocultar segmento verificando si es para agregar registro o crear un formato
+        cadena="form1=" + $('#identificador_del_formato').val();
+                $.ajax({
+                  type:"POST",
+                  url:"../../../controller/th_f_002/cargar_tabla_temporal.php",
+                  data:cadena,
+                  success:function(r){
+                    if(r==1){
+                      $('#tabla_002').load("../../th_f_002/listado_temporal.php");
+                    }else if(r==2){
+                      $('#tabla_002').load("../../th_f_002/listado_temporal.php");
+                    }
+                  }
+                });
+      }
 
       function desactivar_002(){
         cadena="form1=" + $('#identificador_del_formato').val();
@@ -85,6 +109,7 @@
                   success:function(r){
                     if(r==1){
                       alertify.success("Formato desactivado con exito");
+                      setTimeout ("history.back(1);", 2000);
                       return false;
                     }else if(r==2){
                       alertify.error("Error al desactivar");

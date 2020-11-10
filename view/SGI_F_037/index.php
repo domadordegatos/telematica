@@ -2,12 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <?php require_once "../menus/index.php"; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php require_once "../libraries/lib.php";
           require_once "../../model/conexion.php"; 
           require_once "../../model/sgi_f_037.php";
           $conexion=conexion();
+
+          $user = $_SESSION['user'];
+
+            $sql="SELECT login_users.id_user FROM login_users WHERE login_users.usuario = '$user'";
+            $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
+            $sql1="SELECT usuarios.id_user FROM login_users JOIN usuarios ON usuarios.credenciales = login_users.id_user WHERE login_users.id_user = '$ver[0]'";
+            $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
     ?>
 </head>
 <body>
@@ -17,12 +25,12 @@
             <div class="col-4 border border-secondary">
               <img src="../media/photos/t_white.PNG" alt="png_telematica" width="200px">
             </div>
-            <div class="col-4 border border-secondary d-flex text-center align-items-center">
-              <p>INSPECCIÓN DE HERRAMIENTA CAMPO</p>
+            <div class="col-4 border border-secondary d-flex align-items-center">
+              <p class="text-center">INSPECCIÓN DE HERRAMIENTA CAMPO</p>
             </div>
             <div class="col-4 border border-secondary d-flex flex-column" style="padding: 0%;">
               <row class="border border-secondary">Código: SGI F 037</row>
-              <row class="border border-secondary">Revisado: Mayo 2019</row>
+              <row class="border border-secondary">Revisado: Mayo 2020</row>
               <row class="border border-secondary">Versión: 02</row>
             </div>
           </div>
@@ -45,7 +53,7 @@
                     </div>
                     </div>
                 </div>
-                <div class="col-sm-8 my-none">
+                <div class="col-sm-4 my-none">
                         <div class="form-group row m-0">
                         <label for="example-date-input" class="py-0 col-4 col-form-label">LUGAR:</label>
                         <div class="col-8">
@@ -53,6 +61,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-4 my-none">
+                    <div class="form-group row m-0">
+                    <label for="example-date-input" class="py-0 col-4 col-form-label">No:</label>
+                    <div class="col-8">
+                        <input class="form-control form-control-sm" type="text" value="" id="numero">
+                    </div>
+                </div>
+            </div>
             </div>
 
             <div class="row border border-secondary">
@@ -464,30 +480,30 @@
                 </div>
             </div>
             <div class="row bg-info text-center">
-                <div class="col-sm-4">
+                <div class="col-sm-12">
                     REVISADO POR:
                 </div>
 <!--                 <div class="col-sm-3">
                     CARGO:
                 </div> -->
-                <div class="col-sm-8">
+                <!-- <div class="col-sm-8">
                     FIRMA:
-                </div>
+                </div> -->
             </div>
             <div class="row">
-                <div class="col-sm-4 border-secondary border">
+                <div class="col-sm-12 border-secondary border">
                     <select class="form-control form-control-sm" id="revisado" name="revisado">
                         <option value="A">Revisado...</option>
-                          <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios order by lastnames asc";
+                        <?php $sql="SELECT id_user, lastnames, NAMES FROM usuarios WHERE usuarios.id_user = '$ver1[0]' order by lastnames asc";
                                       $result=mysqli_query($conexion,$sql);
                                       while ($ver=mysqli_fetch_row($result)):?>
                             <option value=<?php echo $ver[0]; ?>><?php echo $ver[1]." ".$ver[2]; ?></option>
                           <?php endwhile; ?>
                       </select>
                 </div>
-                <div class="col-sm-8 border-secondary border">
+<!--                 <div class="col-sm-8 border-secondary border">
 
-                </div>
+                </div> -->
             </div>
             <div class="row mt-2">
                 <div class="col-sm-12 d-flex flex-row-reverse">
