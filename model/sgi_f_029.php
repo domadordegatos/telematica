@@ -1,5 +1,13 @@
 <script>
     function agregar_informe(){
+      if($('#actividad').val()=="" || $('#fecha').val()=="" || 
+           $('#aprobacion').val()=="" || $('#observaciones').val()=="" ||
+           $('#revisado').val()=="" || $('#serial').val()=="" ||
+           $('#fecha_fabricacion').val()=="" || $('#serial_eslinga').val()=="" ||
+           $('#fecha_fabricacion_eslinga').val()=="" || $('#serial_eslinga_posicionamiento').val()=="" ||
+           $('#fecha_fabricacion_eslinga_posicionamiento').val()==""){
+          message_campos();
+          }else{
         cadena="form1=" + $('#actividad').val() +
                 "&form2=" + $('#fecha').val() +
                 "&form3=" + $('#aprobacion').val() +
@@ -61,6 +69,7 @@
                     }
                   }
                 });
+          }
     }
 
     function message_exito(){

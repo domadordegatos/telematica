@@ -107,42 +107,8 @@
                   success:function(r){
                     if(r==1){
                       message_exito();
-                      document.getElementById("fecha").value = "";
-                      document.getElementById("lugar").value = "";
-                      document.getElementById("revisado").value = "";
-                      document.getElementById("observaciones").value = "";
-                      document.getElementById("numero").value = "";
-                      document.getElementById("it-01").value = "";
-                      document.getElementById("it-02").value = "";
-                      document.getElementById("it-03").value = "";
-                      document.getElementById("it-04").value = "";
-                      document.getElementById("it-05").value = "";
-                      document.getElementById("it-06").value = "";
-                      document.getElementById("it-07").value = "";
-                      document.getElementById("it-08").value = "";
-                      document.getElementById("it-09").value = "";
-                      document.getElementById("it-10").value = "";
-                      document.getElementById("it-11").value = "";
-                      document.getElementById("it-12").value = "";
-                      document.getElementById("it-13").value = "";
-                      document.getElementById("it-14").value = "";
-                      document.getElementById("it-15").value = "";
-                      document.getElementById("it-16").value = "";
-                      document.getElementById("it-17").value = "";
-                      document.getElementById("it-18").value = "";
-                      document.getElementById("it-19").value = "";
-                      document.getElementById("it-20").value = "";
-                      document.getElementById("it-21").value = "";
-                      document.getElementById("it-22").value = "";
-                      document.getElementById("it-23").value = "";
-                      document.getElementById("it-24").value = "";
-                      document.getElementById("it-25").value = "";
-                      document.getElementById("it-26").value = "";
-                      document.getElementById("it-27").value = "";
-                      document.getElementById("it-28").value = "";
-                      document.getElementById("it-29").value = "";
-                      document.getElementById("it-30").value = "";
-                      
+                      setTimeout ("location.reload();", 2000);
+                      return false;
                     }else if(r==2){
                       message_error();
                     }else{

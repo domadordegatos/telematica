@@ -43,7 +43,7 @@ $canvas->image($imageURL, $x, $y, $imgWidth, $imgHeight);
 
 
 // Definimos el tamaño y orientación del papel que queremos.
-$pdf->set_paper("letter", "portrait");
+$pdf->set_paper("folio", "portrait");
 
 //$pdf->set_paper(array(0,0,104,250));
 

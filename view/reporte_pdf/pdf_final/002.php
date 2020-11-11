@@ -92,7 +92,8 @@ html{
                 th_f_002_cuadrillas.id_registro,
                 company.description,
                 area_proces.description,
-                th_f_002_cuadrillas.id_formato
+                th_f_002_cuadrillas.id_formato,
+                usuarios.firma
                 FROM th_f_002_cuadrillas
                 JOIN usuarios ON usuarios.id_user = th_f_002_cuadrillas.usuario
                 JOIN company ON company.id_company = usuarios.company
@@ -107,7 +108,7 @@ html{
                 <td><?php echo $ver[2] ?></td>
                 <td><?php echo $ver[4] ?></td>
                 <td><?php echo $ver[5] ?></td>
-                <td></td>
+                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[7] ?>.png" width="110px" alt=""></td>
             </tr>
             <?php endwhile; ?>
         </table>

@@ -12,19 +12,19 @@
         $consulta="SELECT * FROM sgi_f_058 JOIN sgi_f_058_preguntas ON sgi_f_058_preguntas.id_058_principal = sgi_f_058.id_058_principal WHERE sgi_f_058.id_058_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$consulta); $datos_058=mysqli_fetch_assoc($result);
 
-        $sql="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description FROM sgi_f_058 
+        $sql="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description, usuarios.firma FROM sgi_f_058 
 		JOIN usuarios ON usuarios.id_user = sgi_f_058.trabajador JOIN company ON company.id_company = usuarios.company JOIN cargos ON cargos.id_cargo = usuarios.cargo WHERE id_058_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
-        $sql1="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description FROM sgi_f_058 
+        $sql1="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description, usuarios.firma FROM sgi_f_058 
 		JOIN usuarios ON usuarios.id_user = sgi_f_058.trabajador2 JOIN company ON company.id_company = usuarios.company JOIN cargos ON cargos.id_cargo = usuarios.cargo WHERE id_058_principal = '$id_del_formato_recuperado'";
         $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
-        $sql2="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description FROM sgi_f_058 
+        $sql2="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description, usuarios.firma FROM sgi_f_058 
 		JOIN usuarios ON usuarios.id_user = sgi_f_058.trabajador3 JOIN company ON company.id_company = usuarios.company JOIN cargos ON cargos.id_cargo = usuarios.cargo WHERE id_058_principal = '$id_del_formato_recuperado'";
         $result2=mysqli_query($conexion,$sql2); $ver2=mysqli_fetch_row($result2);
-        $sql3="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description FROM sgi_f_058 
+        $sql3="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description, usuarios.firma FROM sgi_f_058 
 		JOIN usuarios ON usuarios.id_user = sgi_f_058.trabajador4 JOIN company ON company.id_company = usuarios.company JOIN cargos ON cargos.id_cargo = usuarios.cargo WHERE id_058_principal = '$id_del_formato_recuperado'";
         $result3=mysqli_query($conexion,$sql3); $ver3=mysqli_fetch_row($result3);
-        $sql4="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description FROM sgi_f_058 
+        $sql4="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, company.description, usuarios.firma FROM sgi_f_058 
 		JOIN usuarios ON usuarios.id_user = sgi_f_058.trabajador5 JOIN company ON company.id_company = usuarios.company JOIN cargos ON cargos.id_cargo = usuarios.cargo WHERE id_058_principal = '$id_del_formato_recuperado'";
         $result4=mysqli_query($conexion,$sql4); $ver4=mysqli_fetch_row($result4);
     ?>
@@ -54,7 +54,7 @@ html{
         <td>Código: SGI F 058</td>
         </tr>
 
-        <tr><td>Revisado: Septiembre 2018</td></tr>
+        <tr><td>Revisado: Septiembre 2020</td></tr>
         <tr><td>Versión: 01</td></tr>
         </table>
 
@@ -322,16 +322,16 @@ html{
         <table border="1" style="width: 100%;">
             <tr>
                 <td style="text-align: center; background-color:#17a2b8!important; color: white;" colspan="2">FIRMA DEL ENCARGADO:</td>
-                <td colspan="5" style="text-align: center;">FIRMA</td>
+                <td colspan="5" style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[4] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr>
                 <td>DECLARO QUE LA INFORMACION SUMINISTRADA ES VERAS Y FIDEDIGNA.</td>
                 <td style="text-align: center;">FIRMA DEL TRABAJADOR:</td>
-                <td style="text-align: center;">FIRMA</td>
-                <td style="text-align: center;">FIRMA</td>
-                <td style="text-align: center;">FIRMA</td>
-                <td style="text-align: center;">FIRMA</td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[4] ?>.png" width="130px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[4] ?>.png" width="130px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[4] ?>.png" width="130px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[4] ?>.png" width="130px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[4] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr>
                 <td colspan="7"><strong>Concepto y Recomendación</strong></td>

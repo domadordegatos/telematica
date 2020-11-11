@@ -14,11 +14,11 @@
         JOIN sgi_f_030_estado ON sgi_f_030_estado.id_sgi_principal = sgi_f_030.id_030_principal WHERE id_030_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$consulta); $datos_030=mysqli_fetch_assoc($result);
 
-        $sql="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.inspector WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
+        $sql="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.inspector WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
-        $sql1="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.rescatista WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
+        $sql1="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.rescatista WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
         $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
-        $sql2="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.apoyo_piso WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
+        $sql2="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.apoyo_piso WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
         $result2=mysqli_query($conexion,$sql2); $ver2=mysqli_fetch_row($result2);
     ?>
 
@@ -47,7 +47,7 @@ html{
         <td>Código: SGI F 030</td>
         </tr>
 
-        <tr><td>Revisado: Mayo 2019</td></tr>
+        <tr><td>Revisado: Mayo 2020</td></tr>
         <tr><td>Versión: 02</td></tr>
         </table>
 
@@ -59,7 +59,7 @@ html{
             <tr>
                 <td>FECHA: <?php echo $datos_030['fecha']; ?></td>
                 <td>INSPECCIONADO POR: <?php echo $ver[0]." ".$ver[1] ?></td>
-                <td colspan="2">FIRMA: </td>
+                <td colspan="2">FIRMA: <img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[2] ?>.png" width="120px" alt=""></td>
             </tr>
         </table>
 
@@ -189,25 +189,16 @@ html{
 
         <table style="width: 100%;" border="1">
             <tr>
-                <td rowspan="2" style="background-color:#17a2b8!important; color: white; text-align: center;">RESCATISTA</td>
+                <td rowspan="1" style="background-color:#17a2b8!important; color: white; text-align: center;">RESCATISTA</td>
                 <td><?php echo $ver1[0]." ".$ver1[1] ?></td>
-                <td>FIRMA</td>
-                <td><strong>CIERRE DE HALLAZGOS ENCONTRADOS</strong></td>
+                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[2] ?>.png" width="110px" alt=""></td>
+                <td><strong>CIERRE DE HALLAZGOS ENCONTRADOS: </strong><?php if($datos_030['hallazgos'] == 'Y'){ echo "SI"; } else if($datos_030['hallazgos'] == 'N'){ echo "NO"; } else { echo "NO APLICA"; } ?></td>
             </tr>
             <tr>
-                <td>NOMBRE</td>
-                <td>FIRMA</td>
-                <td><?php if($datos_030['hallazgos'] == 'Y'){ echo "SI"; } else if($datos_030['hallazgos'] == 'N'){ echo "NO"; } else { echo "NO APLICA"; } ?></td>
-            </tr>
-            <tr>
-                <td rowspan="2" style="background-color:#17a2b8!important; color: white; text-align: center;">APOYO EN PISO</td>
+                <td rowspan="" style="background-color:#17a2b8!important; color: white; text-align: center;">APOYO EN PISO</td>
                 <td><?php echo $ver2[0]." ".$ver2[1] ?></td>
-                <td>FIRMA</td>
-                <td rowspan="2">FECHA DE CIERRE: <?php echo $datos_030['fecha_cierre']; ?></td>
-            </tr>
-            <tr>
-                <td>NOMBRE</td>
-                <td>FIRMA</td>
+                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[2] ?>.png" width="110px" alt=""></td>
+                <td rowspan="">FECHA DE CIERRE: <?php echo $datos_030['fecha_cierre']; ?></td>
             </tr>
         </table>
 

@@ -12,13 +12,9 @@
         $consulta="SELECT * FROM sgi_f_037 JOIN sgi_f_037_items ON sgi_f_037_items.id_principal = sgi_f_037.id_037_principal WHERE id_037_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$consulta); $datos_037=mysqli_fetch_assoc($result);
 
-        $sql="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion FROM sgi_f_037 JOIN usuarios ON usuarios.id_user = sgi_f_037.revisado JOIN cargos ON cargos.id_cargo = usuarios.cargo
+        $sql="SELECT usuarios.lastnames, usuarios.`names`, cargos.descripcion, usuarios.firma FROM sgi_f_037 JOIN usuarios ON usuarios.id_user = sgi_f_037.revisado JOIN cargos ON cargos.id_cargo = usuarios.cargo
 		WHERE id_037_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
-        $sql1="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.rescatista WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
-        $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
-        $sql2="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.apoyo_piso WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
-        $result2=mysqli_query($conexion,$sql2); $ver2=mysqli_fetch_row($result2);
     ?>
 
 </head>
@@ -46,7 +42,7 @@ html{
         <td>Código: SGI F 037</td>
         </tr>
 
-        <tr><td>Revisado: Mayo 2019</td></tr>
+        <tr><td>Revisado: Mayo 2020</td></tr>
         <tr><td>Versión: 02</td></tr>
         </table>
 
@@ -316,7 +312,7 @@ html{
             <tr>
                 <td><?php echo $ver[0]." ".$ver[1] ?></td>
                 <td><?php echo $ver[2] ?></td>
-                <td></td>
+                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[3] ?>.png" width="150px" alt=""></td>
             </tr>
         </table>
 

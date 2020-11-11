@@ -12,12 +12,16 @@
         $consulta="SELECT * FROM sgi_f_029 JOIN sgi_f_029_preguntas ON sgi_f_029_preguntas.id_029_principal = sgi_f_029.id_029_principal WHERE sgi_f_029.id_029_principal = '2'";
         $result=mysqli_query($conexion,$consulta); $datos_029=mysqli_fetch_assoc($result);
 
-        $sql="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.inspector WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
+        $sql="SELECT firma FROM sgi_f_029_preguntas JOIN usuarios ON usuarios.id_user = sgi_f_029_preguntas.revisado_per_1 WHERE id_029_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
-        $sql1="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.rescatista WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
+        $sql1="SELECT firma FROM sgi_f_029_preguntas JOIN usuarios ON usuarios.id_user = sgi_f_029_preguntas.revisado_per_2 WHERE id_029_principal = '$id_del_formato_recuperado'";
         $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
-        $sql2="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_030 JOIN usuarios ON usuarios.id_user = sgi_f_030.apoyo_piso WHERE sgi_f_030.id_030_principal = '$id_del_formato_recuperado'";
+        $sql2="SELECT firma FROM sgi_f_029_preguntas JOIN usuarios ON usuarios.id_user = sgi_f_029_preguntas.revisado_per_3 WHERE id_029_principal = '$id_del_formato_recuperado'";
         $result2=mysqli_query($conexion,$sql2); $ver2=mysqli_fetch_row($result2);
+        $sql3="SELECT firma FROM sgi_f_029_preguntas JOIN usuarios ON usuarios.id_user = sgi_f_029_preguntas.revisado_per_4 WHERE id_029_principal = '$id_del_formato_recuperado'";
+        $result3=mysqli_query($conexion,$sql3); $ver3=mysqli_fetch_row($result3);
+        $sql4="SELECT firma FROM sgi_f_029_preguntas JOIN usuarios ON usuarios.id_user = sgi_f_029_preguntas.revisado_per_5 WHERE id_029_principal = '$id_del_formato_recuperado'";
+        $result4=mysqli_query($conexion,$sql4); $ver4=mysqli_fetch_row($result4);
     ?>
 
 </head>
@@ -45,7 +49,7 @@ html{
         <td>Código: SGI F 02</td>
         </tr>
 
-        <tr><td>Revisado: Septiembre 2018</td></tr>
+        <tr><td>Revisado: Septiembre 2020</td></tr>
         <tr><td>Versión: 01</td></tr>
         </table>
 
@@ -65,17 +69,17 @@ html{
             <td colspan="5" style="text-align: center; background-color:#17a2b8!important; color: white;">SERIAL ARNES</td>
         </tr>
         <tr>
-            <td rowspan="3" colspan="2">FIRMA</td>
-            <td style="text-align: center; background-color:#80c0ca!important; color: white;"><?php echo $datos_029['s_arnes_1']; ?></td>
-            <td style="text-align: center; background-color:#80c0ca!important; color: white;"><?php echo $datos_029['s_arnes_2']; ?></td>
-            <td style="text-align: center; background-color:#80c0ca!important; color: white;"><?php echo $datos_029['s_arnes_3']; ?></td>
-            <td style="text-align: center; background-color:#80c0ca!important; color: white;"><?php echo $datos_029['s_arnes_4']; ?></td>
-            <td style="text-align: center; background-color:#80c0ca!important; color: white;"><?php echo $datos_029['s_arnes_5']; ?></td>
+            <td rowspan="3" colspan="2" style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[0] ?>.png" width="220px" alt=""></td>
+            <td style="text-align: center; background-color:#b6dbe0!important; color: black;"><?php echo $datos_029['s_arnes_1']; ?></td>
+            <td style="text-align: center; background-color:#b6dbe0!important; color: black;"><?php echo $datos_029['s_arnes_2']; ?></td>
+            <td style="text-align: center; background-color:#b6dbe0!important; color: black;"><?php echo $datos_029['s_arnes_3']; ?></td>
+            <td style="text-align: center; background-color:#b6dbe0!important; color: black;"><?php echo $datos_029['s_arnes_4']; ?></td>
+            <td style="text-align: center; background-color:#b6dbe0!important; color: black;"><?php echo $datos_029['s_arnes_5']; ?></td>
         </tr>
         <tr>
             <td colspan="5" style="text-align: center; background-color:#17a2b8!important; color: white;">FECHA FABRICACIÓN</td>
         </tr>
-        <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
+        <tr style="text-align: center; background-color:#b6dbe0!important; color: black;">
             <td><?php echo $datos_029['f_fabricacion_1']; ?></td>
             <td><?php echo $datos_029['f_fabricacion_2']; ?></td>
             <td><?php echo $datos_029['f_fabricacion_3']; ?></td>
@@ -237,7 +241,7 @@ html{
                 <td colspan="2" rowspan="4">ESLINGA Y</td>
                 <td colspan="5">SERIAL</td>
             </tr>
-            <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
+            <tr style="text-align: center; background-color:#b6dbe0!important; color: black;">
                 <td><?php echo $datos_029['s_eslinga_y_1']; ?></td>
                 <td><?php echo $datos_029['s_eslinga_y_2']; ?></td>
                 <td><?php echo $datos_029['s_eslinga_y_3']; ?></td>
@@ -247,7 +251,7 @@ html{
             <tr>
                 <td colspan="5" style="text-align: center; background-color:#17a2b8!important; color: white;">FECHA FABRICACIÓN</td>
             </tr>
-            <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
+            <tr style="text-align: center; background-color:#b6dbe0!important; color: black;">
                 <td><?php echo $datos_029['f_eslinga_y_1']; ?></td>
                 <td><?php echo $datos_029['f_eslinga_y_2']; ?></td>
                 <td><?php echo $datos_029['f_eslinga_y_3']; ?></td>
@@ -298,7 +302,7 @@ html{
                 <td colspan="2" rowspan="4">ESLINGA POSICIONAMIENTO</td>
                 <td colspan="5">SERIAL</td>
             </tr>
-            <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
+            <tr style="text-align: center; background-color:#b6dbe0!important; color: black;">
                 <td><?php echo $datos_029['s_eslinga_pos_1']; ?></td>
                 <td><?php echo $datos_029['s_eslinga_pos_2']; ?></td>
                 <td><?php echo $datos_029['s_eslinga_pos_3']; ?></td>
@@ -308,7 +312,7 @@ html{
             <tr>
                 <td colspan="5" style="text-align: center; background-color:#17a2b8!important; color: white;">FECHA FABRICACIÓN</td>
             </tr>
-            <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
+            <tr style="text-align: center; background-color:#b6dbe0!important; color: black;">
                 <td><?php echo $datos_029['f_eslinga_pos_1']; ?></td>
                 <td><?php echo $datos_029['f_eslinga_pos_2']; ?></td>
                 <td><?php echo $datos_029['f_eslinga_pos_3']; ?></td>
@@ -344,11 +348,11 @@ html{
             </tr>
             <tr>
                 <td style="text-align: center;" colspan="2">REVISADO POR:</td>
-                <td style="text-align: center;"><?php  ?></td>
-                <td style="text-align: center;"><?php  ?></td>
-                <td style="text-align: center;"><?php  ?></td>
-                <td style="text-align: center;"><?php  ?></td>
-                <td style="text-align: center;"><?php  ?></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[0] ?>.png" width="100px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[0] ?>.png" width="100px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[0] ?>.png" width="100px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[0] ?>.png" width="100px" alt=""></td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[0] ?>.png" width="100px" alt=""></td>
             </tr>
             <tr>
                 <td colspan="7"><strong>OBSERVACIONES: </strong><?php echo $datos_029['observaciones']; ?></td>

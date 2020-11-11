@@ -608,6 +608,12 @@
 
 <script>
     function agregarme_como_personal(){
+        if($('#serial').val()=="" ||
+           $('#fecha_fabricacion').val()=="" || $('#serial_eslinga').val()=="" ||
+           $('#fecha_fabricacion_eslinga').val()=="" || $('#serial_eslinga_posicionamiento').val()=="" ||
+           $('#fecha_fabricacion_eslinga_posicionamiento').val()==""){
+          message_campos();
+          }else{
           cadena="form1=" + $('#id_formato').val()+
                 "&form4=" + $('#observaciones').val() +
                 "&form5=" + $('#revisado').val() +

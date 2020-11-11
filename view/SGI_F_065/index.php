@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-4 border border-secondary d-flex flex-column" style="padding: 0%;">
                   <row class="border border-secondary">Código: SGI F 065</row>
-                  <row class="border border-secondary">Revisado: Mayo 2019</row>
+                  <row class="border border-secondary">Revisado: Mayo 2020</row>
                   <row class="border border-secondary">Versión: 01</row>
                 </div>
               </div>

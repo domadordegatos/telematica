@@ -32,6 +32,8 @@
             $sql="SELECT * FROM usuarios JOIN login_users ON login_users.id_user = usuarios.credenciales
                                               WHERE cedula = '$cedula' OR login_users.usuario = '$usuario';"; //verificamos si hay usuarios existente con cedula o usuario en bd
             $result=mysqli_query($conexion, $sql);
+
+
             if(mysqli_num_rows($result)<=0){//no encontro registrros bd, agregamos
                 $sql="INSERT INTO login_users VALUES ('','$usuario','$contrasena','1','$rol')";//agregamos primero el usuario
                 $ejecutar=mysqli_query($conexion, $sql);
@@ -41,7 +43,7 @@
                         $result1=mysqli_query($conexion,$id);
                         $ver=mysqli_fetch_row($result1);  //averiguamos el id del registro que creo la insersion del usuario
 
-                        $sql="INSERT INTO usuarios VALUES ('','$nombres','$apellidos','$cedula','$compania','$area','$cargo','$ver[0]')";
+                        $sql="INSERT INTO usuarios VALUES ('','$nombres','$apellidos','$cedula','$compania','$area','$cargo','$ver[0]','')";
                         $ejecutar=mysqli_query($conexion, $sql);
 
                             if($ejecutar){

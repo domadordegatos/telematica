@@ -12,19 +12,19 @@
         $consulta="SELECT * FROM sgi_f_059 JOIN sgi_f_059_preguntas ON sgi_f_059_preguntas.id_059_prin = sgi_f_059.id_059_principal WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$consulta); $datos_059=mysqli_fetch_assoc($result);
 
-        $sql="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_1 WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_1 WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
-        $sql1="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_2 WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql1="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_2 WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
-        $sql2="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_3 WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql2="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_3 WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result2=mysqli_query($conexion,$sql2); $ver2=mysqli_fetch_row($result2);
-        $sql3="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_4 WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql3="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_4 WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result3=mysqli_query($conexion,$sql3); $ver3=mysqli_fetch_row($result3);
-        $sql4="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_5 WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql4="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.integrante_5 WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result4=mysqli_query($conexion,$sql4); $ver4=mysqli_fetch_row($result4);
-        $sql5="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.auth_c WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql5="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.auth_c WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result5=mysqli_query($conexion,$sql5); $ver5=mysqli_fetch_row($result5);
-        $sql6="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.auth_r WHERE id_059_principal = '$id_del_formato_recuperado'";
+        $sql6="SELECT usuarios.lastnames, usuarios.`names`, usuarios.cedula, usuarios.firma FROM sgi_f_059 JOIN usuarios ON usuarios.id_user = sgi_f_059.auth_r WHERE id_059_principal = '$id_del_formato_recuperado'";
         $result6=mysqli_query($conexion,$sql6); $ver6=mysqli_fetch_row($result6);
     ?>
 
@@ -53,7 +53,7 @@ html{
         <td>Código: SGI F 059</td>
         </tr>
 
-        <tr><td>Revisado: Febrero 2019</td></tr>
+        <tr><td>Revisado: Febrero 2020</td></tr>
         <tr><td>Versión: 03</td></tr>
         </table>
 
@@ -101,27 +101,27 @@ html{
             <tr>
                 <td><?php echo $ver[0]." ".$ver[1] ?></td>
                 <td><?php echo $ver[2] ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[3] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr>
                 <td><?php echo $ver1[0]." ".$ver1[1] ?></td>
                 <td><?php echo $ver1[2] ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[3] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr>
                 <td><?php echo $ver2[0]." ".$ver2[1] ?></td>
                 <td><?php echo $ver2[2] ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[3] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr>
                 <td><?php echo $ver3[0]." ".$ver3[1] ?></td>
                 <td><?php echo $ver3[2] ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[3] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr>
                 <td><?php echo $ver4[0]." ".$ver4[1] ?></td>
                 <td><?php echo $ver4[2] ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[3] ?>.png" width="130px" alt=""></td>
             </tr>
             <tr style="text-align: center; background-color:#17a2b8!important; color: white;">
                 <td colspan="3">REQUERIMIENTO DE CLARIDAD</td>
@@ -429,7 +429,7 @@ html{
             </tr>
             <tr>
                 <td colspan="1">FIRMA</td>
-                <td colspan="3">FIRMA</td>
+                <td colspan="3"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver5[3] ?>.png" width="100px" alt=""></td>
             </tr>
             <tr>
                 <td colspan="1">No CEDULA</td>
@@ -449,7 +449,7 @@ html{
             </tr>
             <tr>
                 <td colspan="1">FIRMA</td>
-                <td colspan="3">FIRMA</td>
+                <td colspan="3"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver6[3] ?>.png" width="100px" alt=""></td>
             </tr>
             <tr>
                 <td colspan="1">No CEDULA</td>

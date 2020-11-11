@@ -1,6 +1,6 @@
 <script>
     function agregar_informe(){
-/*         if($('#actividad').val()=="" || $('#fecha').val()=="" || 
+        if($('#actividad').val()=="" || $('#fecha').val()=="" || 
            $('#inspector').val()=="" || $('#rescatista').val()=="" ||
            $('#TIE_serie_1').val()=="" || $('#fecha_cierre').val()=="" ||
            $('#TIE_marca_1').val()=="" || $('#descendedor_2').val()=="" ||
@@ -16,7 +16,7 @@
            $('#apoyo_piso').val()=="" || $('#arrestador_marca_3').val()=="" ||
            $('#cuerda_estatica').val()=="" || $('#cuerda_auxiliar').val()==""){
           message_campos();
-          }else{ */
+          }else{
           cadena="form1=" + $('#actividad').val() +
                 "&form2=" + $('#fecha').val() +
                 "&form3=" + $('#inspector').val() +
@@ -76,12 +76,8 @@
                   success:function(r){
                     if(r==1){
                       alertify.success("Formato creado con exito, falta coordinador y apoyo en piso");
-                      document.getElementById("actividad").value = "";
-                      document.getElementById("fecha").value = "";
-                      document.getElementById("inspector").value = "";
-                      document.getElementById("rescatista").value = "";
-                      document.getElementById("apoyo_piso").value = "";
-                      document.getElementById("fecha_cierre").value = "";
+                      setTimeout ("location.reload();", 2000);
+                      return false;
                     }else if(r==2){
                       message_error();
                     }else{
@@ -89,7 +85,7 @@
                     }
                   }
                 });
-                /* } */
+                }
       }
 
       function message_exito(){

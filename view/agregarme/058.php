@@ -103,7 +103,7 @@
                     <div class="col-sm-9 border-secondary border">
                         <div class="row">
                             <div class="col-sm-2"></div>
-                            <div class="col-sm-10">Cual?							
+                            <div class="col-sm-10">Cual? (si es "no", no llenar)							
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,7 @@
                     <div class="col-sm-9 border-secondary border">
                         <div class="row">
                             <div class="col-sm-2"></div>
-                            <div class="col-sm-10">Cual?											
+                            <div class="col-sm-10">Cual? (si es "no", no llenar)											
                             </div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                     <div class="col-sm-9 border-secondary border">
                         <div class="row">
                             <div class="col-sm-2"></div>
-                            <div class="col-sm-10">Porqué?											
+                            <div class="col-sm-10">Porqué? (si es "no", no llenar)											
                             </div>
                         </div>
                     </div>
@@ -259,7 +259,7 @@
                     <div class="col-sm-9 border-secondary border">
                         <div class="row">
                             <div class="col-sm-2"></div>
-                            <div class="col-sm-10">¿Cuántas horas durmió?												
+                            <div class="col-sm-10">¿Cuántas horas durmió? (si es "no", marque cero)												
                             </div>
                         </div>
                     </div>
@@ -568,8 +568,7 @@
 
 <script>
     function agregarme_como_personal(){
-        if($('#trabajador').val()=="" || $('#medicamento').val()=="" ||
-           $('#sintoma').val()=="" || $('#enfermedad').val()=="" ||
+        if($('#trabajador').val()=="" ||
            $('#resultado').val()=="" || $('#horas').val()=="" || 
            $('#factor').val()=="" || $('#examen').val()=="" || $('#comida').val()=="" ||
            $('#hora_trabajo').val()=="" || $('#fecha_alturas').val()=="" || 

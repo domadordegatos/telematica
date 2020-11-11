@@ -1,8 +1,7 @@
 <script>
     function agregar_informe(){
         if($('#actividad').val()=="" || $('#fecha').val()=="" || 
-           $('#trabajador').val()=="" || $('#medicamento').val()=="" ||
-           $('#sintoma').val()=="" || $('#enfermedad').val()=="" ||
+           $('#trabajador').val()=="" || 
            $('#resultado').val()=="" || $('#horas').val()=="" || 
            $('#factor').val()=="" || $('#examen').val()=="" || $('#comida').val()=="" ||
            $('#hora_trabajo').val()=="" || $('#fecha_alturas').val()=="" || 
@@ -46,24 +45,7 @@
                   success:function(r){
                     if(r==1){
                       alertify.success("Registro exitoso, quedan 4 puestos disponibles para agregar personal");
-                      document.getElementById("actividad").value = "";
-                      document.getElementById("fecha").value = "";
-                      document.getElementById("trabajador").value = "";
-                      document.getElementById("medicamento").value = "";
-                      document.getElementById("sintoma").value = "";
-                      document.getElementById("enfermedad").value = "";
-                      document.getElementById("resultado").value = "";
-                      document.getElementById("horas").value = "";
-                      document.getElementById("factor").value = "";
-                      document.getElementById("examen").value = "";
-                      document.getElementById("alcohol").value = "";
-                      document.getElementById("comida").value = "";
-                      document.getElementById("hora_trabajo").value = "";
-                      document.getElementById("fecha_alturas").value = "";
-                      document.getElementById("hora_actual").value = "";
-                      document.getElementById("alcoholemia").value = "";
-                      document.getElementById("tension").value = "";
-                      document.getElementById("recomendacion").value = "";
+                      setTimeout ("location.reload();", 2000);
                       return false;
                     }else if(r==2){
                       message_error();

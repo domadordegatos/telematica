@@ -12,15 +12,15 @@
         $consulta="SELECT * FROM sgi_f_065 JOIN sgi_f_065_especificacion ON sgi_f_065_especificacion.id_principal = sgi_f_065.id_065_principal WHERE id_065_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$consulta); $datos_065=mysqli_fetch_assoc($result);
 
-        $sql="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.lider_1 WHERE id_065_principal = '$id_del_formato_recuperado'";
+        $sql="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.lider_1 WHERE id_065_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
-        $sql1="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante2 WHERE id_065_principal = '$id_del_formato_recuperado'";
+        $sql1="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante2 WHERE id_065_principal = '$id_del_formato_recuperado'";
         $result1=mysqli_query($conexion,$sql1); $ver1=mysqli_fetch_row($result1);
-        $sql2="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante3 WHERE id_065_principal = '$id_del_formato_recuperado'";
+        $sql2="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante3 WHERE id_065_principal = '$id_del_formato_recuperado'";
         $result2=mysqli_query($conexion,$sql2); $ver2=mysqli_fetch_row($result2);
-        $sql3="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante4 WHERE id_065_principal = '$id_del_formato_recuperado'";
+        $sql3="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante4 WHERE id_065_principal = '$id_del_formato_recuperado'";
         $result3=mysqli_query($conexion,$sql3); $ver3=mysqli_fetch_row($result3);
-        $sql4="SELECT usuarios.lastnames, usuarios.`names` FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante5 WHERE id_065_principal = '$id_del_formato_recuperado'";
+        $sql4="SELECT usuarios.lastnames, usuarios.`names`, usuarios.firma FROM sgi_f_065 JOIN usuarios ON usuarios.id_user = sgi_f_065.integrante5 WHERE id_065_principal = '$id_del_formato_recuperado'";
         $result4=mysqli_query($conexion,$sql4); $ver4=mysqli_fetch_row($result4);
     ?>
 
@@ -49,7 +49,7 @@ html{
         <td>Código: SGI F 065</td>
         </tr>
 
-        <tr><td>Revisado: Mayo 2019</td></tr>
+        <tr><td>Revisado: Mayo 2020</td></tr>
         <tr><td>Versión: 01</td></tr>
         </table>
 
@@ -167,27 +167,27 @@ html{
             <tr>
                 <td><?php echo $ver[0]." ".$ver[1] ?></td>
                 <td colspan="2" style="text-align: center;"><?php echo $datos_065['epp1']; ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[2] ?>.png" width="100px" alt=""></td>
             </tr>
             <?php if($ver1 != ''){ ?><tr>
                 <td><?php echo $ver1[0]." ".$ver1[1] ?></td>
                 <td colspan="2" style="text-align: center;"><?php echo $datos_065['epp2']; ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[2] ?>.png" width="100px" alt=""></td>
             </tr><?php } ?>
             <?php if($ver2 != ''){ ?><tr>
                 <td><?php echo $ver2[0]." ".$ver2[1] ?></td>
                 <td colspan="2" style="text-align: center;"><?php echo $datos_065['epp3']; ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[2] ?>.png" width="100px" alt=""></td>
             </tr><?php } ?>
             <?php if($ver3 != ''){ ?><tr>
                 <td><?php echo $ver3[0]." ".$ver3[1] ?></td>
                 <td colspan="2" style="text-align: center;"><?php echo $datos_065['epp4']; ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[2] ?>.png" width="100px" alt=""></td>
             </tr><?php } ?>
             <?php if($ver4 != ''){ ?><tr>
                 <td><?php echo $ver4[0]." ".$ver4[1] ?></td>
                 <td colspan="2" style="text-align: center;"><?php echo $datos_065['epp5']; ?></td>
-                <td style="text-align: center;">FIRMA</td>
+                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[2] ?>.png" width="100px" alt=""></td>
             </tr><?php } ?>
         </table>
 
@@ -219,7 +219,7 @@ html{
                 </tr>
                 <tr>
                     <td colspan="2"><strong>LIDER DEL TRABAJO NOMBRE: <?php echo $ver[0]." ".$ver[1] ?></strong></td>
-                    <td colspan="2"><strong>FIRMA: </strong>FIRMA</td>
+                    <td colspan="2"><strong>FIRMA: </strong><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[2] ?>.png" width="100px" alt=""></td>
                 </tr>
         </table>
 
