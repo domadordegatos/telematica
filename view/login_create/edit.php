@@ -13,6 +13,7 @@
     ?>
 </head>
 <body>
+    <?php if($ver[0] == 1){ ?>
     <div class="container-x d-flex justify-content-between" style="width: 100%;">
         <div class="parte1 m-4 " style="width: 50%;">
             <h2>Trabajadores Telematica</h2>
@@ -32,9 +33,9 @@
                     <td><?php echo $ver[1]; ?></td>
                     <td><?php echo $ver[2]; ?></td>
                     <td><?php echo $ver[3]; ?></td>
-                    <td><?php echo $ver[4]; ?></td>
-                    <td><?php echo $ver[5]; ?></td>
-                    <td><a class="btn btn-sm btn-warning" onclick="llamar_informacion(<?php echo $ver[0]; ?>)">
+                    <?php if($ver[4] == 1){ ?><td class="bg-info text-white">Activo</td><?php }else{ ?><td class="bg-danger text-white">Inactivo</td><?php } ?>
+                    <td><img src="../media/firmas/<?php echo $ver[5]; ?>.png" width="90px" alt="<?php echo $ver[5]; ?>"></td>
+                    <td><a class="btn btn-sm btn-warning" onclick="llamar_informacion('<?php echo $ver[0]; ?>')">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
                           </svg>
@@ -141,7 +142,7 @@
                 <button class="btn btn-lg btn-block btn-success my-3" onclick="actualizar_usuario()">Editar Usuario</button>
             </div>
         </div>
-    </div>
+    </div><?php } ?>
     
 </body>
 </html>

@@ -149,7 +149,7 @@ body {
 
         <div class="contenedor" style="margin:auto;">
 
-          <form action="" class="form-group border-warning border rounded p-3">
+          <form action="../../model/actualizar_firma.php" enctype="multipart/form-data" method="POST" class="form-group border-warning border rounded p-3">
             
             <div class="row"><div class="col-sm-12"><h2>Actualizar Firma</h2></div></div>
             <div class="row"><div class="col-sm-12"><small class="form-text text-muted mb-2">Este espacio es solo para cambiar la firma existente! 
@@ -163,7 +163,7 @@ body {
                 Ingresa la cedula del usuario
               </div>
               <div class="col-sm-6 my-2">
-                <input type="text" id="" class="form-control" name="" value="" placeholder="1118...">
+                <input type="text" id="cedula_actualizar" class="form-control" name="cedula_actualizar" value="" placeholder="1118...">
               </div>
             </div>
             <div class="row">
@@ -171,7 +171,7 @@ body {
                 Nueva Firma:
               </div>
               <div class="col-sm-6">
-                <input class="form-control" type="file" name="" style="overflow: hidden;" id="">
+                <input class="form-control" type="file" name="firma_actualizar" style="overflow: hidden;" id="firma_actualizar">
               </div>
             </div>
             <button type="submit" class="btn btn-warning mt-3" id="">Actualizar firma</button>
@@ -202,7 +202,8 @@ body {
 </html>
 
 <script>
-	function register(){
+
+  function register(){
     if($('#nombres').val()=="" || $('#apellidos').val()=="" ||
        $('#cedula').val()=="" || $('#usuario').val()=="" ||
        $('#password').val()=="" || $('#compania').val()=="" ||

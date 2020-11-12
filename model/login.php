@@ -14,7 +14,7 @@
             $sql1="UPDATE usuarios SET names = '$a5', lastnames = '$a6', cedula = '$a7', company = '$a8', area = '$a9', cargo = '$a10' WHERE id_user = '$a11'";
             $ejecutar1=mysqli_query($conexion, $sql1);
                 if($ejecutar1){
-                    $sql2="UPDATE login_users SET usuario = '$a1', login_users.password = '$a2', estado = '$a3', rol = '$a4' WHERE id_user = '$credencial'";
+                    $sql2="UPDATE login_users SET usuario = '$a1', login_users.password = '$a2', estado = '$a3', rol = '$a4'  WHERE id_user = '$credencial[0]'";
                     $ejecutar2=mysqli_query($conexion, $sql2);
                         if($ejecutar2){
                             echo 1;
