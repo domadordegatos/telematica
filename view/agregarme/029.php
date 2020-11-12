@@ -667,6 +667,7 @@
                     }
                   }
                 });
+          }
     }
     function deshabilitar(){
         cadena="form1=" + $('#id_formato').val();

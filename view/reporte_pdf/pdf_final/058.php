@@ -68,26 +68,26 @@ html{
             <tr>
                 <td style="text-align: right;" colspan="2">NOMBRE DEL TRABAJADOR:</td>
                 <td><?php echo $ver[0]." ".$ver[1] ?></td>
-                <td><?php echo $ver1[0]." ".$ver1[1] ?></td>
-                <td><?php echo $ver2[0]." ".$ver2[1] ?></td>
-                <td><?php echo $ver3[0]." ".$ver3[1] ?></td>
-                <td><?php echo $ver4[0]." ".$ver4[1] ?></td>
+                <?php if(isset($ver1[0])){ ?><td><?php echo $ver1[0]." ".$ver1[1] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver2[0])){ ?><td><?php echo $ver2[0]." ".$ver2[1] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver3[0])){ ?><td><?php echo $ver3[0]." ".$ver3[1] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver4[0])){ ?><td><?php echo $ver4[0]." ".$ver4[1] ?></td> <?php }else{ ?><td></td> <?php } ?>
             </tr>
             <tr>
                 <td style="text-align: right;" colspan="2">EMPRESA:</td>
                 <td><?php echo $ver[3] ?></td>
-                <td><?php echo $ver1[3] ?></td>
-                <td><?php echo $ver2[3] ?></td>
-                <td><?php echo $ver3[3] ?></td>
-                <td><?php echo $ver4[3] ?></td>
+                <?php if(isset($ver1[0])){ ?><td><?php echo $ver1[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver2[0])){ ?><td><?php echo $ver2[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver3[0])){ ?><td><?php echo $ver3[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver4[0])){ ?><td><?php echo $ver4[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
             </tr>
             <tr>
                 <td style="text-align: right;" colspan="2">CARGO:</td>
                 <td><?php echo $ver[2] ?></td>
-                <td><?php echo $ver1[2] ?></td>
-                <td><?php echo $ver2[2] ?></td>
-                <td><?php echo $ver3[2] ?></td>
-                <td><?php echo $ver4[2] ?></td>
+                <?php if(isset($ver1[0])){ ?><td><?php echo $ver1[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver2[0])){ ?><td><?php echo $ver2[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver3[0])){ ?><td><?php echo $ver3[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
+                <?php if(isset($ver4[0])){ ?><td><?php echo $ver4[2] ?></td> <?php }else{ ?><td></td> <?php } ?>
             </tr>
             <tr style="text-align: center; background-color:#17a2b8!important; color: white;">
                 <td style="text-align: center;">No</td>
@@ -328,21 +328,20 @@ html{
                 <td>DECLARO QUE LA INFORMACION SUMINISTRADA ES VERAS Y FIDEDIGNA.</td>
                 <td style="text-align: center;">FIRMA DEL TRABAJADOR:</td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[4] ?>.png" width="130px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[4] ?>.png" width="130px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[4] ?>.png" width="130px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[4] ?>.png" width="130px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[4] ?>.png" width="130px" alt=""></td>
+                <td style="text-align: center;"><?php if(isset($ver1[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[4] ?>.png" width="130px" alt=""> <?php }?></td>
+                <td style="text-align: center;"><?php if(isset($ver2[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[4] ?>.png" width="130px" alt=""> <?php }?></td>
+                <td style="text-align: center;"><?php if(isset($ver3[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[4] ?>.png" width="130px" alt=""> <?php }?></td>
+                <td style="text-align: center;"><?php if(isset($ver4[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[4] ?>.png" width="130px" alt=""> <?php }?></td>
             </tr>
             <tr>
                 <td colspan="7"><strong>Concepto y Recomendación</strong></td>
             </tr>
             <tr><td colspan="7"><strong>TRABAJADOR 1:</strong><?php echo $datos_058['recomendacion']; ?></td></tr>
-            <tr><td colspan="7"><strong>TRABAJADOR 2:</strong><?php echo $datos_058['recomendacion2']; ?></td></tr>
-            <tr><td colspan="7"><strong>TRABAJADOR 3:</strong><?php echo $datos_058['recomendacion3']; ?></td></tr>
-            <tr><td colspan="7"><strong>TRABAJADOR 4:</strong><?php echo $datos_058['recomendacion4']; ?></td></tr>
-            <tr><td colspan="7"><strong>TRABAJADOR 5:</strong><?php echo $datos_058['recomendacion5']; ?></td></tr>
+            <?php if(isset($ver1[0])){ ?><tr><td colspan="7"><strong>TRABAJADOR 2:</strong><?php echo $datos_058['recomendacion2']; ?></td></tr><?php }?>
+            <?php if(isset($ver2[0])){ ?><tr><td colspan="7"><strong>TRABAJADOR 3:</strong><?php echo $datos_058['recomendacion3']; ?></td></tr><?php }?>
+            <?php if(isset($ver3[0])){ ?><tr><td colspan="7"><strong>TRABAJADOR 4:</strong><?php echo $datos_058['recomendacion4']; ?></td></tr><?php }?>
+            <?php if(isset($ver4[0])){ ?><tr><td colspan="7"><strong>TRABAJADOR 5:</strong><?php echo $datos_058['recomendacion5']; ?></td></tr><?php }?>
         </table>
-
     </div>
     
 </body>

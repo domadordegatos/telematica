@@ -8,6 +8,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Signin Template · Bootstrap</title>
+    <link rel="icon" type="image/png" href="../media/photos/logo.ico" />
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
 
@@ -84,9 +85,11 @@ body {
 
   <body class="text-center">
 
-    <?php
-          require_once "../menus/index.php";
-          ?>
+    <?php require_once "../menus/index.php"; 
+        if($ver[0] == 1){
+    ?>
+
+
           <div class="container-x d-flex justify-content-between">
             <form class="form-signin" style="background-color: #fff; border-radius: 10px; box-shadow: 0 14px 28px rgba(0,0,0,0.25),  0 10px 10px rgba(0,0,0,0.22);">
           <img class="mb-4" src="../media/photos/logo.png" alt="" width="200" height="200">
@@ -144,23 +147,62 @@ body {
           <p class="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
         </form>
 
-        <form action="../../model/firma.php" method="POST"  enctype="multipart/form-data" class="form-group" style="margin:auto;">
-          <div class="contenedor border p-3 rounded">
-            <h2>Añade la firma del nuevo usuario</h2>
-            <small class="form-text text-muted mb-2">Solo formato PNG, resolucion 250px ancho, 50px alto</small>
-            <input class="form-control" type="file" name="firma" style="overflow: hidden;" id="firma">
-            <input type="text" id="cedulaoculta" name="cedulaoculta" value="" hidden>
-            <button type="submit" class="btn btn-info mt-3" style="display: none;" id="agregar_firma">Añadir firma</button>
-          </div>
+        <div class="contenedor" style="margin:auto;">
 
-        </form>
-          </div>
+          <form action="" class="form-group border-warning border rounded p-3">
+            
+            <div class="row"><div class="col-sm-12"><h2>Actualizar Firma</h2></div></div>
+            <div class="row"><div class="col-sm-12"><small class="form-text text-muted mb-2">Este espacio es solo para cambiar la firma existente! 
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-octagon-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M11.46.146A.5.5 0 0 0 11.107 0H4.893a.5.5 0 0 0-.353.146L.146 4.54A.5.5 0 0 0 0 4.893v6.214a.5.5 0 0 0 .146.353l4.394 4.394a.5.5 0 0 0 .353.146h6.214a.5.5 0 0 0 .353-.146l4.394-4.394a.5.5 0 0 0 .146-.353V4.893a.5.5 0 0 0-.146-.353L11.46.146zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+              </svg>
+            </small></div></div>
+            <div class="row"><div class="col-sm-12"><small class="form-text text-muted mb-2">Solo formato PNG, resolucion 250px ancho, 50px alto</small></div></div>
+            <div class="row">
+              <div class="col-sm-6">
+                Ingresa la cedula del usuario
+              </div>
+              <div class="col-sm-6 my-2">
+                <input type="text" id="" class="form-control" name="" value="" placeholder="1118...">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                Nueva Firma:
+              </div>
+              <div class="col-sm-6">
+                <input class="form-control" type="file" name="" style="overflow: hidden;" id="">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-warning mt-3" id="">Actualizar firma</button>
+
+          </form>
+          
+
+          <form action="../../model/firma.php" method="POST"  enctype="multipart/form-data" class="form-group">
+            <div class="contenedor border p-3 rounded border-info">
+              <h2>Añade la firma del nuevo usuario</h2>
+              <small class="form-text text-muted mb-2">Solo formato PNG, resolucion 250px ancho, 50px alto</small>
+              <div class="row">
+                <div class="col-sm-6">
+                  Ingresa la cedula del usuario
+                </div>
+                <div class="col-sm-6 my-2">
+                  <input type="text" id="cedulaoculta" class="form-control" name="cedulaoculta" value="" placeholder="1118...">
+                </div>
+              </div>
+              <input class="form-control" type="file" name="firma" style="overflow: hidden;" id="firma">
+              <button type="submit" class="btn btn-info mt-3" style="display: none;" id="agregar_firma">Añadir firma nueva</button>
+            </div>
+  
+          </form>
+        </div>
+          </div><?php } ?>
 </body>
 </html>
 
 <script>
 	function register(){
-    
     if($('#nombres').val()=="" || $('#apellidos').val()=="" ||
        $('#cedula').val()=="" || $('#usuario').val()=="" ||
        $('#password').val()=="" || $('#compania').val()=="" ||
@@ -183,11 +225,10 @@ body {
                   data:cadena,
                   success:function(r){
                     if(r==1){
-                      alertify.success("Usuario creado con exito, añade la firma");
+                      alertify.success("Usuario creado con exito, añade la firma ahora.");
                       document.getElementById("agregar_firma").style.display = 'block';
                       document.getElementById("nombres").value = "";
                       document.getElementById("apellidos").value = "";
-                      document.getElementById("cedula_oculta").value = $('#cedula').val();
                       document.getElementById("usuario").value = "";
                       document.getElementById("password").value = "";
                       document.getElementById("firma").value = "";

@@ -99,6 +99,8 @@ function agregar_informe(){
                   success:function(r){
                     if(r==1){
                       message_exito();
+                      setTimeout ("location.reload();", 2000);
+                      return false;
                     }else if(r==2){
                       message_error();
                     }else{

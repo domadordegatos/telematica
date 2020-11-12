@@ -63,7 +63,7 @@ html{
             </tr>
         </table>
 
-        <table border="1">
+        <table border="1" style="width: 100%;">
             <tr style="background-color:#17a2b8!important; color: white;">
                 <td rowspan="2" colspan="4"><strong>ESTADO DEL EQUIPO</strong> Verificar costuras y tejidos trenzados, elementos metalicos libres de oxidación, rotos o deformados)</td>
                 <td colspan="4" style="text-align: center;">ESTADO</td>
@@ -190,14 +190,14 @@ html{
         <table style="width: 100%;" border="1">
             <tr>
                 <td rowspan="1" style="background-color:#17a2b8!important; color: white; text-align: center;">RESCATISTA</td>
-                <td><?php echo $ver1[0]." ".$ver1[1] ?></td>
-                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[2] ?>.png" width="110px" alt=""></td>
+                <td><?php if(isset($ver1[0])){ ?><?php echo $ver1[0]." ".$ver1[1] ?> <?php } ?></td>
+                <td><?php if(isset($ver1[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[2] ?>.png" width="110px" alt=""> <?php } ?></td>
                 <td><strong>CIERRE DE HALLAZGOS ENCONTRADOS: </strong><?php if($datos_030['hallazgos'] == 'Y'){ echo "SI"; } else if($datos_030['hallazgos'] == 'N'){ echo "NO"; } else { echo "NO APLICA"; } ?></td>
             </tr>
             <tr>
                 <td rowspan="" style="background-color:#17a2b8!important; color: white; text-align: center;">APOYO EN PISO</td>
-                <td><?php echo $ver2[0]." ".$ver2[1] ?></td>
-                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[2] ?>.png" width="110px" alt=""></td>
+                <td><?php if(isset($ver2[0])){ ?><?php echo $ver2[0]." ".$ver2[1] ?><?php } ?></td>
+                <td><?php if(isset($ver2[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[2] ?>.png" width="110px" alt=""><?php } ?></td>
                 <td rowspan="">FECHA DE CIERRE: <?php echo $datos_030['fecha_cierre']; ?></td>
             </tr>
         </table>

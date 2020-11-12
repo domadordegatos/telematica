@@ -1,7 +1,5 @@
-<?php
-session_start();
- ?>
       <?php
+      session_start();
       if (isset($_SESSION['tabla_f_002_temp'])):
         foreach (@$_SESSION['tabla_f_002_temp'] as $key) {
         $dat=explode("||", $key);
@@ -14,7 +12,5 @@ session_start();
          <th><?php echo $dat[5] ?></th>
        </tr>
 
-<?php } ?>
-
-<?php endif;?>
+<?php } endif;?>
 

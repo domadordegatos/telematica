@@ -4,7 +4,7 @@
         $.ajax({
           type:"POST",
           data:"id_empleado=" +$('#empleado_id').val(),
-          url:"../../controller/th_f_002/ob_datos_usuario.php",
+          url:"../../controller/login/ob_datos_usuario.php",
           success:function(r){
             dato=jQuery.parseJSON(r);
               $('#nombre_empleado').val(dato['names']+" "+dato['lastnames']);

@@ -9,7 +9,7 @@
           $conexion=conexion();
           $id_del_formato_recuperado=$_REQUEST['id_formato'];  
 
-        $consulta="SELECT * FROM sgi_f_029 JOIN sgi_f_029_preguntas ON sgi_f_029_preguntas.id_029_principal = sgi_f_029.id_029_principal WHERE sgi_f_029.id_029_principal = '2'";
+        $consulta="SELECT * FROM sgi_f_029 JOIN sgi_f_029_preguntas ON sgi_f_029_preguntas.id_029_principal = sgi_f_029.id_029_principal WHERE sgi_f_029.id_029_principal = '$id_del_formato_recuperado'";
         $result=mysqli_query($conexion,$consulta); $datos_029=mysqli_fetch_assoc($result);
 
         $sql="SELECT firma FROM sgi_f_029_preguntas JOIN usuarios ON usuarios.id_user = sgi_f_029_preguntas.revisado_per_1 WHERE id_029_principal = '$id_del_formato_recuperado'";
@@ -349,10 +349,10 @@ html{
             <tr>
                 <td style="text-align: center;" colspan="2">REVISADO POR:</td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[0] ?>.png" width="100px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[0] ?>.png" width="100px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[0] ?>.png" width="100px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[0] ?>.png" width="100px" alt=""></td>
-                <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[0] ?>.png" width="100px" alt=""></td>
+                <td style="text-align: center;"><?php if(isset($ver1[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[0] ?>.png" width="100px" alt=""><?php }?></td>
+                <td style="text-align: center;"><?php if(isset($ver2[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[0] ?>.png" width="100px" alt=""><?php }?></td>
+                <td style="text-align: center;"><?php if(isset($ver3[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[0] ?>.png" width="100px" alt=""><?php }?></td>
+                <td style="text-align: center;"><?php if(isset($ver4[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[0] ?>.png" width="100px" alt=""><?php }?></td>
             </tr>
             <tr>
                 <td colspan="7"><strong>OBSERVACIONES: </strong><?php echo $datos_029['observaciones']; ?></td>

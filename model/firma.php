@@ -22,9 +22,12 @@
                         if($cedula_firma[0] != '' AND $cedula_firma[1] == ''){
                             $sql="UPDATE usuarios SET firma = '$new_firma' WHERE cedula = '$cedula'";
                             $result=mysqli_query($conexion,$sql);
-                            echo "funciona";
+
+                            header("Location: http://localhost/telematica/view/login_create/200.php");
+                        }else{
+                            header("Location: http://localhost/telematica/view/login_create/404.php");
                         }
             }else if($_FILES['firma']['size'] >= ($limite_kb *1024)){
-                echo "muy pesada la imagen";
+                header("Location: http://localhost/telematica/view/login_create/404.php");
             }
 ?>

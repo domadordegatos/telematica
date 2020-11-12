@@ -103,26 +103,26 @@ html{
                 <td><?php echo $ver[2] ?></td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[3] ?>.png" width="130px" alt=""></td>
             </tr>
-            <tr>
+            <?php if(isset($ver1[0])){ ?><tr>
                 <td><?php echo $ver1[0]." ".$ver1[1] ?></td>
                 <td><?php echo $ver1[2] ?></td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver1[3] ?>.png" width="130px" alt=""></td>
-            </tr>
-            <tr>
+            </tr><?php } ?>
+            <?php if(isset($ver2[0])){ ?><tr>
                 <td><?php echo $ver2[0]." ".$ver2[1] ?></td>
                 <td><?php echo $ver2[2] ?></td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver2[3] ?>.png" width="130px" alt=""></td>
-            </tr>
-            <tr>
+            </tr><?php } ?>
+            <?php if(isset($ver3[0])){ ?><tr>
                 <td><?php echo $ver3[0]." ".$ver3[1] ?></td>
                 <td><?php echo $ver3[2] ?></td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver3[3] ?>.png" width="130px" alt=""></td>
-            </tr>
-            <tr>
+            </tr><?php } ?>
+            <?php if(isset($ver4[0])){ ?><tr>
                 <td><?php echo $ver4[0]." ".$ver4[1] ?></td>
                 <td><?php echo $ver4[2] ?></td>
                 <td style="text-align: center;"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver4[3] ?>.png" width="130px" alt=""></td>
-            </tr>
+            </tr><?php } ?>
             <tr style="text-align: center; background-color:#17a2b8!important; color: white;">
                 <td colspan="3">REQUERIMIENTO DE CLARIDAD</td>
             </tr>
@@ -406,13 +406,13 @@ html{
         <table border="1" style="width: 100%;">
             <tr>
                 <td rowspan="2" style="text-align: center; background-color:#80c0ca!important; color: white; height: 70px;">COORDINADOR DE ALTURAS</td>
-                <td>NOMBRE: <?php echo $ver5[0]." ".$ver5[1]; ?></td>
+                <td>NOMBRE: <?php if(isset($ver5[0])){ ?><?php echo $ver5[0]." ".$ver5[1]; ?><?php } ?></td>
                 <td rowspan="2" style="text-align: center; background-color:#80c0ca!important; color: white; height: 70px;">RESCATISTA</td>
-                <td>NOMBRE: <?php echo $ver6[0]." ".$ver6[1]; ?></td>
+                <td>NOMBRE: <?php if(isset($ver6[0])){ ?><?php echo $ver6[0]." ".$ver6[1]; ?><?php } ?></td>
             </tr>
             <tr>
-                <td>No CEDULA: <?php echo $ver5[2]; ?></td>
-                <td>No CEDULA: <?php echo $ver6[2]; ?></td>
+                <td>No CEDULA: <?php if(isset($ver5[0])){ ?><?php echo $ver5[2]; ?><?php } ?></td>
+                <td>No CEDULA: <?php if(isset($ver6[0])){ ?><?php echo $ver6[2]; ?><?php } ?></td>
             </tr>
             <tr style="text-align: center; background-color:#17a2b8!important; color: white;"><td colspan="4">AUTORIZACIÓN PARA EL TRABAJO</td></tr>
             <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
@@ -425,15 +425,15 @@ html{
             </tr>
             <tr>
                 <td colspan="1">NOMBRE</td>
-                <td colspan="3"><?php echo $ver5[0]." ".$ver5[1]; ?></td>
+                <td colspan="3"><?php if(isset($ver5[0])){ ?><?php echo $ver5[0]." ".$ver5[1]; ?> <?php } ?></td>
             </tr>
             <tr>
                 <td colspan="1">FIRMA</td>
-                <td colspan="3"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver5[3] ?>.png" width="100px" alt=""></td>
+                <td colspan="3"><?php if(isset($ver5[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver5[3] ?>.png" width="100px" alt=""> <?php } ?></td>
             </tr>
             <tr>
                 <td colspan="1">No CEDULA</td>
-                <td colspan="3"><?php echo $ver5[2]; ?></td>
+                <td colspan="3"><?php if(isset($ver5[0])){ ?><?php echo $ver5[2]; ?> <?php } ?></td>
             </tr>
             <tr style="text-align: center; background-color:#80c0ca!important; color: white;">
                     <td colspan="1" style="text-align: center;">Rescatista</td>
@@ -445,15 +445,15 @@ html{
             </tr>
             <tr>
                 <td colspan="1">NOMBRE</td>
-                <td colspan="3"><?php echo $ver6[0]." ".$ver6[1]; ?></td>
+                <td colspan="3"><?php if(isset($ver6[0])){ ?><?php echo $ver6[0]." ".$ver6[1]; ?> <?php } ?></td>
             </tr>
             <tr>
                 <td colspan="1">FIRMA</td>
-                <td colspan="3"><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver6[3] ?>.png" width="100px" alt=""></td>
+                <td colspan="3"><?php if(isset($ver6[0])){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver6[3] ?>.png" width="100px" alt=""> <?php } ?></td>
             </tr>
             <tr>
                 <td colspan="1">No CEDULA</td>
-                <td colspan="3"><?php echo $ver6[2]; ?></td>
+                <td colspan="3"><?php if(isset($ver6[0])){ ?><?php echo $ver6[2]; ?> <?php } ?></td>
             </tr>
             
         </table>
