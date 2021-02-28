@@ -1,9 +1,9 @@
         <table class="table table-bordered table-sm mt-3">
             <tr class="table-info">
                 <td>Id</td>
-                <td>Lugar</td>
-                <td>Permiso</td>
+                <td>Descripcion</td>
                 <td>Fecha</td>
+                <td>Observaciones</td>
                 <td>Opcion</td>
             </tr>
         

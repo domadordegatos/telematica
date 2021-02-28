@@ -4,7 +4,7 @@
         function temp_002(){
             require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_002']);
 
-        $sql1="	SELECT id_th_f_002,lugar,permiso,fecha,estado FROM th_f_002 ORDER BY fecha desc"; $result1=mysqli_query($conexion,$sql1);
+        $sql1="	SELECT id_th_f_002,lugar,permiso,fecha,estado FROM th_f_002 where estado != 1 ORDER BY fecha desc"; $result1=mysqli_query($conexion,$sql1);
                 if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
                   echo 2;//no hay registros
                 }else{
@@ -21,7 +21,7 @@
         }
         function temp_002_d(){
           require_once "conexion.php"; $conexion=conexion(); $id=$_POST['form1'];
-          $sql="SELECT estado FROM th_f_002 WHERE id_th_f_002 = '1'"; $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
+          $sql="SELECT estado FROM th_f_002 WHERE id_th_f_002 = '$id'"; $result=mysqli_query($conexion,$sql); $ver=mysqli_fetch_row($result);
 
           if($ver[0] == 2){
             $sql2="UPDATE th_f_002 SET estado = '0' WHERE id_th_f_002 = '$id'"; $ejecutar2=mysqli_query($conexion, $sql2);
@@ -35,7 +35,7 @@
         function temp_065(){
           require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_065']);
 
-      $sql1="SELECT id_065_principal,lugar,acudiente,descripcion,estado FROM sgi_f_065 ORDER BY id_065_principal desc"; $result1=mysqli_query($conexion,$sql1);
+      $sql1="SELECT id_065_principal,lugar,acudiente,descripcion,estado FROM sgi_f_065 where estado != 1 ORDER BY id_065_principal desc"; $result1=mysqli_query($conexion,$sql1);
               if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
                 echo 2;//no hay registros
               }else{
@@ -65,7 +65,7 @@
       function temp_037(){
         require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_037']);
 
-    $sql1="SELECT id_037_principal,fecha,lugar,numero,estado FROM sgi_f_037 ORDER BY fecha desc"; $result1=mysqli_query($conexion,$sql1);
+    $sql1="SELECT id_037_principal,fecha,lugar,numero,estado FROM sgi_f_037 where estado != 1 ORDER BY fecha desc"; $result1=mysqli_query($conexion,$sql1);
             if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
               echo 2;//no hay registros
             }else{
@@ -96,7 +96,7 @@
     function temp_030(){
       require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_030']);
 
-  $sql1="SELECT id_030_principal,fecha,actividad,hallazgos,estado FROM sgi_f_030  ORDER BY id_030_principal desc"; $result1=mysqli_query($conexion,$sql1);
+  $sql1="SELECT id_030_principal,fecha,actividad,hallazgos,estado FROM sgi_f_030 where estado != 1 ORDER BY id_030_principal desc"; $result1=mysqli_query($conexion,$sql1);
           if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
             echo 2;//no hay registros
           }else{
@@ -127,7 +127,7 @@
   function temp_059(){
     require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_059']);
 
-$sql1="SELECT id_059_principal,numero_permiso,descripcion,ubicacion,estado FROM sgi_f_059 ORDER BY id_059_principal desc"; $result1=mysqli_query($conexion,$sql1);
+$sql1="SELECT id_059_principal,numero_permiso,descripcion,ubicacion,estado FROM sgi_f_059 where estado != 1 ORDER BY id_059_principal desc"; $result1=mysqli_query($conexion,$sql1);
         if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
           echo 2;//no hay registros
         }else{
@@ -158,7 +158,7 @@ function temp_059_d(){
 function temp_058(){
     require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_058']);
 
-$sql1="SELECT id_058_principal,actividad,fecha,hora_actual,estado FROM sgi_f_058 ORDER BY id_058_principal desc"; $result1=mysqli_query($conexion,$sql1);
+$sql1="SELECT id_058_principal,actividad,fecha,hora_actual,estado FROM sgi_f_058 where estado != 1 ORDER BY id_058_principal desc"; $result1=mysqli_query($conexion,$sql1);
         if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
           echo 2;//no hay registros
         }else{
@@ -189,7 +189,7 @@ function temp_058_d(){
 function temp_029(){
   require_once "conexion.php"; $conexion=conexion(); unset($_SESSION['temp_029']);
 
-$sql1="SELECT id_029_principal,actividad,fecha,observaciones,estado FROM sgi_f_029 ORDER BY id_029_principal desc"; $result1=mysqli_query($conexion,$sql1);
+$sql1="SELECT id_029_principal,actividad,fecha,observaciones,estado FROM sgi_f_029 where estado != 1 ORDER BY id_029_principal desc"; $result1=mysqli_query($conexion,$sql1);
       if(mysqli_num_rows($result1)<=0){//no encontro registrros bd
         echo 2;//no hay registros
       }else{

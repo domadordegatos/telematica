@@ -108,11 +108,13 @@
             $sql="SELECT * FROM usuarios WHERE cedula = '$cedula_empleado'";//verificamos si esta registrado el usuario con el numero de su cedula en la tabla de usuarios
             $result=mysqli_query($conexion,$sql);
             $ver=mysqli_fetch_row($result);
-            if(mysqli_num_rows($result)<=0){//no hay registros lo agregamos y ponemos su registro
-                $sql="INSERT INTO usuarios values ('','$nombre_empleado','','$cedula_empleado','$company','$area')";
+            if(mysqli_num_rows($result)<=0){//no hay registros lo agregamos y ponemos su registr
+                $sql="INSERT INTO usuarios values ('','$nombre_empleado','','$cedula_empleado','$company','$area','3','31','')";
                 $result=mysqli_query($conexion,$sql);
                 if($result){
                     echo 3;
+                }else{
+                    echo 0;
                 }
 
             }else{//hay registros, solo agregamos el registro de actividad

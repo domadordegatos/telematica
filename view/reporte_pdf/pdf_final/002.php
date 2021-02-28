@@ -108,7 +108,7 @@ html{
                 <td><?php echo $ver[2] ?></td>
                 <td><?php echo $ver[4] ?></td>
                 <td><?php echo $ver[5] ?></td>
-                <td><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[7] ?>.png" width="110px" alt=""></td>
+                <td><?php if($ver[7 != '']){ ?><img src="http://192.168.1.79/telematica/view/media/firmas/<?php echo $ver[7] ?>.png" width="110px" alt=""><?php } ?></td>
             </tr>
             <?php endwhile; ?>
         </table>
